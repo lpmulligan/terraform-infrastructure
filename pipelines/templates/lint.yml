@@ -12,7 +12,7 @@ stages:
             displayName: "Terraform Validate ${{ state.key }}"
             steps:
               - checkout: self
-              - task: JamiePhillips.Terraform.TerraformTool.TerraformTool@0
+              - task: TerraformTaskV1@0
                 displayName: "Use Terraform $(TF_VERSION)"
                 inputs:
                   version: "$(TF_VERSION)"

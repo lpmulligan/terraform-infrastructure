@@ -39,7 +39,7 @@ stages:
                             tar -xzvf tfplan_${{ wkspc }}/${{ wkspc }}.tar.gz --directory ${{ wkspc }}
                           displayName: "Extract Artifact to ${{ wkspc }}"
                           workingDirectory: "$(Pipeline.Workspace)"
-                        - task: JamiePhillips.Terraform.TerraformTool.TerraformTool@0
+                        - task: TerraformTaskV1@0
                           displayName: "Use Terraform $(TF_VERSION)"
                           inputs:
                             version: "$(TF_VERSION)"
