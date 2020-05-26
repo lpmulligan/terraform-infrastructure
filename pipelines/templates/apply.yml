@@ -39,10 +39,9 @@ stages:
                             tar -xzvf tfplan_${{ wkspc }}/${{ wkspc }}.tar.gz --directory ${{ wkspc }}
                           displayName: "Extract Artifact to ${{ wkspc }}"
                           workingDirectory: "$(Pipeline.Workspace)"
-                        - task: TerraformTaskV1@0
-                          displayName: "Use Terraform $(TF_VERSION)"
+                        - task: TerraformInstaller@0
                           inputs:
-                            version: "$(TF_VERSION)"
+                            terraformVersion: "$(TF_VERSION)"
                         - task: AzureCLI@1
                           displayName: "Setup Authentication"
                           inputs:

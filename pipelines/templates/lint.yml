@@ -12,10 +12,9 @@ stages:
             displayName: "Terraform Validate ${{ state.key }}"
             steps:
               - checkout: self
-              - task: TerraformTaskV1@0
-                displayName: "Use Terraform $(TF_VERSION)"
+              - task: TerraformInstaller@0
                 inputs:
-                  version: "$(TF_VERSION)"
+                  terraformVersion: "$(TF_VERSION)"
               - task: AzureCLI@1
                 displayName: "Setup Authentication"
                 inputs:

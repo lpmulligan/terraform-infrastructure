@@ -1,5 +1,9 @@
 terraform {
   backend "azurerm" {
+    resource_group_name   = "lpm-eastus2-tfstate-rg"
+    storage_account_name  = "lpmtfstateeastus2sa"
+    container_name        = "tfstate"
+    key                   = "terraform.tfstate"
   }
 }
 
