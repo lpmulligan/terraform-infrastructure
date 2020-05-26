@@ -42,7 +42,7 @@ stages:
           - spoke_eastus_np
 
 # Apply NonProd
-- template: apply.yml
+- template: templates/apply.yml
   parameters:
     service_connection: 'Terraform MySub NonProd'
     states: 
