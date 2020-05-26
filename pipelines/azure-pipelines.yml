@@ -17,62 +17,23 @@ stages:
   parameters:
     service_connection: 'azure-msdn-outlook-sub-sc'
     states: 
-      hub:
-        - hub-centralus-np
-        - hub-centralus-prod
-      spoke:
-        - spoke-eastus-np
-        - spoke-eastus-prod
+      infrastructure:
+        - default
 
 # Plan NonProd
 - template: templates/plan.yml
   parameters:
     service_connection: 'azure-msdn-outlook-sub-sc'
     states: 
-      hub:
+      infrastucture:
         workspaces:
-          - hub_centralus_np
-      spoke:
-        dependsOn: hub_centralus_np
-        workspaces:
-          - spoke_eastus_np
+          - default
 
 # Apply NonProd
 - template: templates/apply.yml
   parameters:
     service_connection: 'azure-msdn-outlook-sub-sc'
     states: 
-      hub:
+      infrastucture:
         workspaces:
-          - hub_centralus_np
-      spoke:
-        dependsOn: hub_centralus_np
-        workspaces:
-          - spoke_eastus_np
-
-# Plan Prod
-- template: templates/plan.yml
-  parameters:
-    service_connection: 'azure-msdn-outlook-sub-sc'
-    states: 
-      hub:
-        dependsOn: hub_centralus_np
-        workspaces:
-          - hub_centralus_prod
-      spoke:
-        dependsOn: hub_centralus_prod
-        workspaces:
-          - spoke_eastus_prod
-
-# Apply Prod
-- template: templates/apply.yml
-  parameters:
-    service_connection: 'azure-msdn-outlook-sub-sc'
-    states: 
-      hub:
-        workspaces:
-          - hub_centralus_prod
-      spoke:
-        dependsOn: hub_centralus_prod
-        workspaces:
-          - spoke_eastus_prod
+          - default
