@@ -10,7 +10,7 @@ pool:
 
 variables:
 - name: TF_VERSION
-  value: '0.12.24'
+  value: '0.12.25'
 
 stages:
 - template: templates/lint.yml
