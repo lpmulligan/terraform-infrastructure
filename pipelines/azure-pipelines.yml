@@ -19,7 +19,7 @@ variables:
 stages:
 - template: templates/lint.yml
   parameters:
-    service_connection: 'Terraform MySub NonProd'
+    service_connection: 'azure-msdn-outlook-sub-sc'
     states: 
       hub:
         - hub-centralus-np
@@ -31,7 +31,7 @@ stages:
 # Plan NonProd
 - template: templates/plan.yml
   parameters:
-    service_connection: 'Terraform MySub NonProd'
+    service_connection: 'azure-msdn-outlook-sub-sc'
     states: 
       hub:
         workspaces:
@@ -44,7 +44,7 @@ stages:
 # Apply NonProd
 - template: templates/apply.yml
   parameters:
-    service_connection: 'Terraform MySub NonProd'
+    service_connection: 'azure-msdn-outlook-sub-sc'
     states: 
       hub:
         workspaces:
@@ -57,7 +57,7 @@ stages:
 # Plan Prod
 - template: templates/plan.yml
   parameters:
-    service_connection: 'Terraform MySub Prod'
+    service_connection: 'azure-msdn-outlook-sub-sc'
     states: 
       hub:
         dependsOn: hub_centralus_np
@@ -71,7 +71,7 @@ stages:
 # Apply Prod
 - template: templates/apply.yml
   parameters:
-    service_connection: 'Terraform MySub Prod'
+    service_connection: 'azure-msdn-outlook-sub-sc'
     states: 
       hub:
         workspaces:
