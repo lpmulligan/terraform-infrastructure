@@ -11,10 +11,6 @@ pool:
 variables:
 - name: TF_VERSION
   value: '0.12.24'
-- name: STATE_STORAGE_ACCOUNT
-  value: $(STATE_STORAGE_ACCOUNT)
-- name: STATE_SUBSCRIPTION
-  value: $(STATE_SUBSCRIPTION)
 
 stages:
 - template: templates/lint.yml
