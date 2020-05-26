@@ -1,5 +1,5 @@
 resource "azurerm_virtual_network" "example" {
-  name                = "${var.prefix}-${var.location}-example-vnet"
+  name                = "${var.prefix}-${module.azure-region.location_short}-example-vnet"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
   tags                = var.tags
@@ -7,8 +7,8 @@ resource "azurerm_virtual_network" "example" {
 }
 
 resource "azurerm_subnet" "aks" {
-  name                 = "${var.prefix}-${var.location}-example-apps-subnet"
+  name                 = "${var.prefix}-${module.azure-region.location_short}-example-apps-subnet"
   resource_group_name  = azurerm_resource_group.example.name
   virtual_network_name = azurerm_virtual_network.example.name
-  address_prefix       = var.address_prefix
+  address_prefixes       = var.address_prefixes
 }

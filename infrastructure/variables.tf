@@ -6,8 +6,8 @@ variable "address_space" {
   default = ["10.13.0.0/20"]
 }
 
-variable "address_prefix" {
-  default = "10.13.8.0/22"
+variable "address_prefixes" {
+  default = ["10.13.8.0/22"]
 }
 
 variable "address_prefix_aci" {
