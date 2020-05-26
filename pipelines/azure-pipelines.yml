@@ -12,9 +12,9 @@ variables:
 - name: TF_VERSION
   value: '0.12.24'
 - name: STATE_STORAGE_ACCOUNT
-  value: 'nctfstate'
+  value: $(STATE_STORAGE_ACCOUNT)
 - name: STATE_SUBSCRIPTION
-  value: 'MySub'
+  value: $(STATE_SUBSCRIPTION)
 
 stages:
 - template: lint.yml
