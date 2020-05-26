@@ -17,7 +17,7 @@ variables:
   value: $(STATE_SUBSCRIPTION)
 
 stages:
-- template: lint.yml
+- template: templates/lint.yml
   parameters:
     service_connection: 'Terraform MySub NonProd'
     states: 
@@ -29,7 +29,7 @@ stages:
         - spoke-eastus-prod
 
 # Plan NonProd
-- template: plan.yml
+- template: templates/plan.yml
   parameters:
     service_connection: 'Terraform MySub NonProd'
     states: 
@@ -55,7 +55,7 @@ stages:
           - spoke_eastus_np
 
 # Plan Prod
-- template: plan.yml
+- template: templates/plan.yml
   parameters:
     service_connection: 'Terraform MySub Prod'
     states: 
@@ -69,7 +69,7 @@ stages:
           - spoke_eastus_prod
 
 # Apply Prod
-- template: apply.yml
+- template: templates/apply.yml
   parameters:
     service_connection: 'Terraform MySub Prod'
     states: 
