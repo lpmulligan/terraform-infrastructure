@@ -15,6 +15,11 @@ stages:
               - task: TerraformInstaller@0
                 inputs:
                   terraformVersion: "$(TF_VERSION)"
+              - task: TerraformTaskV1@0
+                displayName: "Validate TF via Task"
+                inputs:
+                  provider: 'azurerm'
+                  command: 'validate'
               - task: AzureCLI@1
                 displayName: "Setup Authentication"
                 inputs:
