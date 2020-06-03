@@ -8,7 +8,7 @@ windows_enabled = true
 
 location = "eastus2"
 
-prefix="lpm"
+prefix="jn"
 
 tags = {
   owner        = "Lawrence Mulligan"
