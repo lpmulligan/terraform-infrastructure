@@ -1,8 +1,8 @@
 location = "eastus2"
 
-prefix="lpm"
+prefix="jn"
 
 tags = {
-  owner        = "Lawrence Mulligan"
+  owner        = "Joe Nunham"
   organization = "Home"
 }
