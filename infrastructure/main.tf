@@ -4,8 +4,8 @@ locals {
 
 terraform {
   backend "azurerm" {
-    resource_group_name   = local.settings.stateRg
-    storage_account_name  = local.settings.stateSA
+    resource_group_name   = "jn-eastus2-tfstate-rg"
+    storage_account_name  = "jntfstateeastus2sa"
     container_name        = "tfstate"
     key                   = "terraform.tfstate"
   }
