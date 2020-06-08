@@ -3,8 +3,8 @@
 ##############################################################
 
 # Tenant/Subscription Configurations
-tenant_id: f4735e53-b724-4b84-acc6-07a4a3674462
-subscription_id: 01827906-7cd5-43db-aaba-a7e0963f70f1
+tenant_id: 6660b467-add3-4d9e-8ada-48b1721959f3
+subscription_id: 254c0d14-fe78-4909-a8bb-76339ca9d1ee
 
 ######################################################
 ################## Terraform State ####################
