@@ -1,7 +1,7 @@
 resource "azurerm_key_vault" "kv" {
   name                        = local.settings.keyvault.name
   location                    = local.settings.keyvault.location
-  resource_group_name         = "${local.settings.rgPrefix.EUS}-test-${local.settings.rg}"
+  resource_group_name         = "${local.settings.rgPrefix.EUS}test-${local.settings.rg}"
   tags                        = local.settings.keyvault.tags
   enabled_for_disk_encryption = local.settings.keyvault.encryption
   tenant_id                   = data.azurerm_client_config.current.tenant_id
