@@ -15,7 +15,6 @@ stateSA: azeastus10mdevtfstate
 stateSATier: Standard
 stateSARepType: LRS
 
-
 ######################################################
 ################## RG Identifiers ####################
 #Do Not Change - These build the appropriate RG names
@@ -80,26 +79,14 @@ rsv: azeastus10mdevrsvbkup001
 ######################################################
 ################## Networking ########################
 
+# To be added once we know how we are doing the networking
+
 ######################################################
 ############# CloudAdmin Storage Account #############
 
 storagename: azeastus10mdevlrsadmin001
 
 storage_account:
-  storage_account:
-  replication: lr
-  account_tier: Standard
-  access_tier: Hot
-  replication_type: LRS
-  kind: BlobStorage
-  enable_https_traffic_only: true
-
-######################################################
-############# TfDeploy Storage Account ###############
-
-storagename_tfdeploy: azeastus10mdevlrstfdep001
-
-storage_account_tfdeploy:
   storage_account:
   replication: lr
   account_tier: Standard
