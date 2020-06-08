@@ -1,7 +1,11 @@
+locals {
+  settings = yamldecode(file("../../environments/10mdeveastus/terraform.yaml"))
+}
+
 terraform {
   backend "azurerm" {
-    resource_group_name   = "jn-eastus2-tfstate-rg"
-    storage_account_name  = "jntfstateeastus2sa"
+    resource_group_name   = local.settings.stateRg
+    storage_account_name  = local.settings.stateSA
     container_name        = "tfstate"
     key                   = "terraform.tfstate"
   }
@@ -20,14 +24,6 @@ data "azurerm_subscription" "current" {}
 
 
 resource "azurerm_resource_group" "example" {
-  name     = "${var.prefix}-${module.azure-region.location_short}-example-rg"
-  location = var.location
-  tags     = var.tags
-}
-
-
-module "azure-region" {
-  source  = "../modules/azure_region"
-  azure_region = "eastus2"
+  name     = "${local.settings.rgPrefix.EUS}-test-${local.settings.rg}"
 }
 

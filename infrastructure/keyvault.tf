@@ -1,11 +1,11 @@
-resource "azurerm_key_vault" "example" {
-  name                        = "${var.prefix}-example-kv"
-  location                    = azurerm_resource_group.example.location
-  resource_group_name         = azurerm_resource_group.example.name
-  tags                        = var.tags
-  enabled_for_disk_encryption = true
+resource "azurerm_key_vault" "kv" {
+  name                        = local.settings.keyvault.name
+  location                    = local.settings.keyvault.location
+  resource_group_name         = "${local.settings.rgPrefix.EUS}-test-${local.settings.rg}"
+  tags                        = local.settings.keyvault.tags
+  enabled_for_disk_encryption = local.settings.keyvault.encryption
   tenant_id                   = data.azurerm_client_config.current.tenant_id
-  sku_name                    = "standard"
+  sku_name                    = local.settings.keyvault.sku_name
 }
 
 resource "azurerm_key_vault_access_policy" "admin" {

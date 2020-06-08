@@ -7,21 +7,20 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "tfstate" {
-  name     = "AZ-EUS-TFSTATE-10MDEV-RG"
-  location = "East US"
+  name     = local.settings.stateRg
+  location = local.settings.stateRgLocation
 }
 
 resource "azurerm_storage_account" "tfstate" {
-  name                     = "azeastus10mdevtfstate"
-  resource_group_name      = azurerm_resource_group.tfstate.name
-  location                 = azurerm_resource_group.tfstate.location
-  tags                     = var.tags
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
+  name                     = local.settings.stateSA
+  resource_group_name      = local.settings.stateRg
+  location                 = local.settings.stateRgLocation
+  account_tier             = local.settings.stateSATier
+  account_replication_type = local.settings.stateSARepType
 }
 
 resource "azurerm_storage_container" "tfstate" {
   name                  = "tfstate"
-  storage_account_name  = azurerm_storage_account.tfstate.name
+  storage_account_name  = local.settings.stateSA
   container_access_type = "private"
 }

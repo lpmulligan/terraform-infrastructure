@@ -7,6 +7,16 @@ tenant_id: f4735e53-b724-4b84-acc6-07a4a3674462
 subscription_id: 01827906-7cd5-43db-aaba-a7e0963f70f1
 
 ######################################################
+################## Terraform State ####################
+
+stateRg: AZ-EUS-TFSTATE-10MDEV-RG
+stateRgLocation: eastus
+stateSA: azeastus10mdevtfstate
+stateSATier: Standard
+stateSARepType: LRS
+
+
+######################################################
 ################## RG Identifiers ####################
 #Do Not Change - These build the appropriate RG names
 #in main.tf
@@ -28,15 +38,18 @@ rg: RG
 ######################################################
 ################## Prefixes ##########################
 
-rgPrefixEUS: AZ-EUS-
-rgPrefixWUS: AZ-WUS-
-vmPrefixEUS: AZVWPEUS
-vmPrefixWUS: AZVWPWUS
-admSvrPrefix: ADMSVR
-hpcNodePrefix: HPCNODE
-hpcHeadPrefix: HPCHEAD
-citrixSvrPrefix: CTRX
-sqlSvrPrefix: SQL
+rgPrefix:
+  EUS: AZ-EUS-
+  WUS: AZ-WUS-
+vmPrefix:
+  EUS: AZVWPEUS
+  WUS: AZVWPWUS
+hostType:
+  admSvr: ADMSVR
+  hpcNode: HPCNODE
+  hpcHead: HPCHEAD
+  citrix: CTRX
+  sql: SQL
 
 ######################################################
 ################## Location ##########################
@@ -46,14 +59,17 @@ location: eastus
 ######################################################
 ################## Key Vault #########################
 
-keyvault: azeastus10mdevkv001
-enabled_for_disk_encryption: true
-sku_name: standard
-key_permissions: get
-secret_permissions: get
-storage_permissions: get
-bypass: AzureServices
-default_action: Deny
+keyvault:
+  name: azeastus10mdevkv001
+  location: eastus
+  tags:
+  encryption: true
+  sku_name: standard
+  key_permissions: get
+  secret_permissions: get
+  storage_permissions: get
+  bypass: AzureServices
+  default_action: Deny
 
 ######################################################
 ################## Recovery Services Vault ###########
