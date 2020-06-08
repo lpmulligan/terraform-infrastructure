@@ -25,5 +25,5 @@ data "azurerm_subscription" "current" {}
 
 resource "azurerm_resource_group" "example" {
   name     = "${local.settings.rgPrefix.EUS}-test-${local.settings.rg}"
+  location = local.settings.location
 }
-
