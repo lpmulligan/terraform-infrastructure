@@ -1,0 +1,47 @@
+##############################################################
+######## Update these values for your new environment ########
+##############################################################
+
+# Account/Subscription Configurations
+tenant_id:
+# Subscription ID for new environment
+subscription_id:
+
+# Environment/Application
+env: DEV
+app: QRM
+
+# Naming prefixes
+rgPrefixEUS: AZ-EUS-
+rgPrefixWUS: AZ-WUS-
+vmPrefixEUS: AZVWPEUS
+vmPrefixWUS: AZVWPWUS
+admSvrPrefix: ADMSVR
+hpcNodePrefix: HPCNODE
+hpcHeadPrefix: HPCHEAD
+citrixSvrPrefix: CITRIX
+sqlSvrPrefix: SQL
+
+# Enter the name of the key vault in your subscription as well as the resource group.
+key_vault:
+  name: azeastusinfrkv001
+  resource_group: AZ-EUS-CLDADMIN-SHRDSVC-RG
+
+# Update Tags to be applied to all resources
+tags:
+  AppID: # Will need to get this
+  Cost-Center: # Will need to get this
+  Created-By: # Will need to get this
+  Deployed Date: # Not sure how this would work in just plain yaml
+  Description: # Will need to get this
+  Owner: # Will need to get this
+  SDLC: # Will need to get this
+
+##############################################################
+##############################################################
+
+
+## Virtual Network Configurations
+#virtual_network:
+#  address_space: ["10.152.8.0/22"] # < - Change this to be the ip supernet for your Azure vnet.  Contact [it?] if you do not know this value.
+
