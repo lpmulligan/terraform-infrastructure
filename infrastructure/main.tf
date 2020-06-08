@@ -1,5 +1,5 @@
 locals {
-  settings = yamldecode(file("../../environments/10mdeveastus/terraform.yaml"))
+  settings = yamldecode(file("../environments/10mdeveastus/terraform.yaml"))
 }
 
 terraform {
