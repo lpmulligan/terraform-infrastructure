@@ -1,0 +1,104 @@
+##############################################################
+######## Update these values for your new environment ########
+##############################################################
+
+# Tenant/Subscription Configurations
+tenant_id: f4735e53-b724-4b84-acc6-07a4a3674462
+subscription_id: 01827906-7cd5-43db-aaba-a7e0963f70f1
+
+######################################################
+################## RG Identifiers ####################
+#Do Not Change - These build the appropriate RG names
+#in main.tf
+#Note: service entry should match the abbreviation for
+#the subscription you are deploying to
+
+cloud: AZ
+locationtype: EUS
+nettype: NETWORK
+fwtype: PAN
+backtype: BACKUP
+cloudtype: CLDADMIN
+monitype: MONITOR
+addstype: ADDS
+tftype: TFDEPLOY
+service: DEV
+rg: RG
+
+######################################################
+################## Prefixes ##########################
+
+rgPrefixEUS: AZ-EUS-
+rgPrefixWUS: AZ-WUS-
+vmPrefixEUS: AZVWPEUS
+vmPrefixWUS: AZVWPWUS
+admSvrPrefix: ADMSVR
+hpcNodePrefix: HPCNODE
+hpcHeadPrefix: HPCHEAD
+citrixSvrPrefix: CTRX
+sqlSvrPrefix: SQL
+
+######################################################
+################## Location ##########################
+
+location: eastus
+
+######################################################
+################## Key Vault #########################
+
+keyvault: azeastus10mdevkv001
+enabled_for_disk_encryption: true
+sku_name: standard
+key_permissions: get
+secret_permissions: get
+storage_permissions: get
+bypass: AzureServices
+default_action: Deny
+
+######################################################
+################## Recovery Services Vault ###########
+
+sku: Standard
+rsv: azeastus10mdevrsvbkup001
+
+######################################################
+################## Networking ########################
+
+######################################################
+############# CloudAdmin Storage Account #############
+
+storagename: azeastus10mdevlrsadmin001
+
+storage_account:
+  storage_account:
+  replication: lr
+  account_tier: Standard
+  access_tier: Hot
+  replication_type: LRS
+  kind: BlobStorage
+  enable_https_traffic_only: true
+
+######################################################
+####### Network Security Group Diagnostic Settings ###
+
+namensg1: nsg-1diag
+namensg2: nsg-2diag
+days: 90
+enabled: true
+
+######################################################
+###################### Tags ##########################
+
+# Update Tags to be applied to all resources
+tags:
+  AppID: # Will need to get this
+  Cost-Center: # Will need to get this
+  Created-By: # Will need to get this
+  Deployed Date: # Not sure how this would work in just plain yaml
+  Description: # Will need to get this
+  Owner: # Will need to get this
+  SDLC: # Will need to get this
+
+
+
+
