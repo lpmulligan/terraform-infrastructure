@@ -1,20 +1,23 @@
+locals {
+  settings = yamldecode(file("../../environments/10mdeveastus/terraform.yaml"))
+}
+
 provider "azurerm" {
   features {}
 }
 
 resource "azurerm_resource_group" "tfstate" {
-  name     = "${var.prefix}-${var.location}-tfstate-rg"
-  location = var.location
-  tags     = var.tags
+  name     = "AZ-EUS-TFSTATE-10MDEV-RG"
+  location = "East US"
 }
 
 resource "azurerm_storage_account" "tfstate" {
-  name                     = "${var.prefix}tfstate${var.location}sa"
+  name                     = "azeastus10mdevtfstate"
   resource_group_name      = azurerm_resource_group.tfstate.name
   location                 = azurerm_resource_group.tfstate.location
   tags                     = var.tags
   account_tier             = "Standard"
-  account_replication_type = "GRS"
+  account_replication_type = "LRS"
 }
 
 resource "azurerm_storage_container" "tfstate" {

@@ -79,6 +79,20 @@ storage_account:
   enable_https_traffic_only: true
 
 ######################################################
+############# TfDeploy Storage Account ###############
+
+storagename_tfdeploy: azeastus10mdevlrstfdep001
+
+storage_account_tfdeploy:
+  storage_account:
+  replication: lr
+  account_tier: Standard
+  access_tier: Hot
+  replication_type: LRS
+  kind: BlobStorage
+  enable_https_traffic_only: true
+
+######################################################
 ####### Network Security Group Diagnostic Settings ###
 
 namensg1: nsg-1diag
