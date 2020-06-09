@@ -15,7 +15,7 @@ resource "azurerm_network_interface" "interface" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.subnet.id
     private_ip_address_allocation = "static"
-    private_ip_address            = "${cidrhost(data.azurerm_subnet.subnet.address_prefixes)}"
+    private_ip_address            = "${cidrhost(azurerm_subnet.subnet.address_prefixes)}"
   }
 }
 
