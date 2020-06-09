@@ -24,7 +24,7 @@ stages:
 - template: templates/plan.yml
   parameters:
     service_connection: 'Development'
-    states: 
+    states:
       infrastructure:
         workspaces:
           - default
