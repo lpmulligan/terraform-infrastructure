@@ -27,9 +27,7 @@ resource "azurerm_windows_virtual_machine" "hpcnode" {
   size                = local.settings.hpcNode.size
   admin_username      = "adminuser"
   admin_password      = "P@$$w0rd1234!"
-  network_interface_ids = [
-    "${element(azurerm_network_interface.nic_hpcnode.*.id,count.index)}"
-  ]
+  network_interface_ids = ["${element(azurerm_network_interface.nic_hpcnode.*.id,count.index)}"]
 
   os_disk {
     caching              = "ReadWrite"
