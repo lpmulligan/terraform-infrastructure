@@ -1,8 +1,8 @@
 resource "azurerm_subnet" "subnet" {
-  name                 = "internal"
-  resource_group_name  = "${local.settings.cloud}-EUS-${local.settings.nettype}-${local.settings.service}-${local.settings.rg}"
-  virtual_network_name = local.settings.vnet.name
-  address_prefix       = local.settings.vnet.subnet_prefix
+  name                   = "internal"
+  resource_group_name    = "${local.settings.cloud}-EUS-${local.settings.nettype}-${local.settings.service}-${local.settings.rg}"
+  virtual_network_name   = local.settings.vnet.name
+  address_prefixes       = local.settings.vnet.subnet_prefix
 }
 
 resource "azurerm_network_interface" "interface" {
@@ -18,8 +18,8 @@ resource "azurerm_network_interface" "interface" {
 }
 
 resource "azurerm_windows_virtual_machine" "hpcnode" {
-  count               = 2
-  name                = "${local.settings.cloud}-${local.settings.app}-${local.settings.hpcNode.type}-[count.index]-${local.settings.env}"
+  count               = "${var.server_count : 0}"
+  name                = "${local.settings.cloud}-${local.settings.app}-${local.settings.hpcNode.type}-${count.index +1}-${local.settings.env}"
   resource_group_name = "${local.settings.cloud}-${local.settings.app}-10M-${local.settings.env}-${local.settings.rg}"
   location            = local.settings.location
   size                = "Standard_B2s"
