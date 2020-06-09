@@ -1,7 +1,3 @@
-locals {
-  settings = yamldecode(file("../environments/10mdeveastus/terraform.yaml"))
-}
-
 resource "azurerm_subnet" "subnet" {
   name                 = "internal"
   resource_group_name  = "${local.settings.cloud}-EUS-${local.settings.nettype}-${local.settings.service}-${local.settings.rg}"
