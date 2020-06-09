@@ -22,7 +22,7 @@ resource "azurerm_network_interface" "nic_hpcnode" {
 resource "azurerm_windows_virtual_machine" "hpcnode" {
   count               = local.settings.hpcNode.count
   name                = "${local.settings.cloud}-${local.settings.app}-${local.settings.env}-${local.settings.hpcNode.type}-${count.index + 1}"
-  resource_group_name = "${local.settings.cloud}-${local.settings.app}-${local.settings.env}-${local.settings.env}-${local.settings.rg}"
+  resource_group_name = "${local.settings.cloud}-${local.settings.app}-${local.settings.env}-${local.settings.rg}"
   location            = local.settings.location
   size                = local.settings.hpcNode.size
   admin_username      = "adminuser"
