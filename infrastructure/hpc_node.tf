@@ -1,10 +1,3 @@
-resource "azurerm_subnet" "subnet" {
-  name                   = "${local.settings.cloud}-${local.settings.app}-${local.settings.env}-SN"
-  resource_group_name    = "${local.settings.cloud}-${local.settings.app}-${local.settings.env}-${local.settings.rg}"
-  virtual_network_name   = local.settings.vnet.name
-  address_prefixes       = local.settings.vnet.subnet_prefixes
-}
-
 resource "azurerm_network_interface" "interface" {
   count               = local.settings.hpcNode.count
   name                = "${local.settings.cloud}-${local.settings.app}-${local.settings.env}-NI-${count.index +1}"
@@ -13,9 +6,9 @@ resource "azurerm_network_interface" "interface" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.subnet.id
+    subnet_id                     = data.azurerm_subnet.subnet.id
     private_ip_address_allocation = "static"
-    private_ip_address            = "${cidrhost(azurerm_subnet.subnet.address_prefixes)}"
+    private_ip_address            = "${cidrhost(data.azurerm_subnet.subnet.address_prefixes)}"
   }
 }
 
