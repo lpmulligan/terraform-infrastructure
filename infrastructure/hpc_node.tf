@@ -18,7 +18,8 @@ resource "azurerm_network_interface" "interface" {
 }
 
 resource "azurerm_windows_virtual_machine" "hpcnode" {
-  name                = "${local.settings.cloud}-${local.settings.app}-${local.settings.hpcNode.type}-${local.settings.hpcNode.index +1}-${local.settings.env}"
+  count               = "0"
+  name                = "${local.settings.cloud}-${local.settings.app}-${local.settings.hpcNode.type}-${count.index + 1}-${local.settings.env}"
   resource_group_name = "${local.settings.cloud}-${local.settings.app}-10M-${local.settings.env}-${local.settings.rg}"
   location            = local.settings.location
   size                = local.settings.hpcNode.size
