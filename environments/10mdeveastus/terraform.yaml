@@ -46,6 +46,8 @@ hostType:
 
 hpcNode:
   type: HPCNODE
+  size: Standard_B2s
+  index: 0
 
 ######################################################
 ################## Location ##########################
