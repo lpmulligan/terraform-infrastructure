@@ -24,6 +24,6 @@ data "azurerm_subscription" "current" {}
 
 
 resource "azurerm_resource_group" "dev" {
-  name     = "${local.settings.rgPrefix.EUS}-10MDEV-${local.settings.rg}"
+  name     = "${local.settings.cloud}-${local.settings.app}-10M-${local.settings.env}-${local.settings.rg}"
   location = local.settings.location
 }

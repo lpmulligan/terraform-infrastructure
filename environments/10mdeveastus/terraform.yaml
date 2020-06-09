@@ -37,9 +37,8 @@ rg: RG
 ######################################################
 ################## Prefixes ##########################
 
-rgPrefix:
-  EUS: AZ-EUS-
-  WUS: AZ-WUS-
+app: QRM
+env: DV
 vmPrefix:
   EUS: AZVWPEUS
   WUS: AZVWPWUS
