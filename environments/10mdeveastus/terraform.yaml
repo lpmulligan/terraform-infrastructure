@@ -78,7 +78,7 @@ keyvault:
 
 vnet:
   name: AZ-EUS-DEV-VNET-001-10.232.16.0_22
-  subnet_prefix: "10.232.16.128/27"
+  subnet_prefixes: ["10.232.16.128/27"]
 
 interface_name: QRM
 
