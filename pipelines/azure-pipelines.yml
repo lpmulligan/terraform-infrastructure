@@ -15,7 +15,7 @@ variables:
 stages:
 - template: templates/lint.yml
   parameters:
-    service_connection: 'azure-msdn-outlook-sub-sc'
+    service_connection: 'Development'
     states: 
       infrastructure:
         - default
@@ -23,7 +23,7 @@ stages:
 # Plan NonProd
 - template: templates/plan.yml
   parameters:
-    service_connection: 'azure-msdn-outlook-sub-sc'
+    service_connection: 'Development'
     states: 
       infrastructure:
         workspaces:
@@ -32,7 +32,7 @@ stages:
 # Apply NonProd
 - template: templates/apply.yml
   parameters:
-    service_connection: 'azure-msdn-outlook-sub-sc'
+    service_connection: 'Development'
     states: 
       infrastructure:
         workspaces:
