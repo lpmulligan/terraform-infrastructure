@@ -2,7 +2,7 @@ resource "azurerm_subnet" "subnet" {
   name                   = "internal"
   resource_group_name    = "${local.settings.cloud}-EUS-${local.settings.nettype}-${local.settings.service}-${local.settings.rg}"
   virtual_network_name   = local.settings.vnet.name
-  address_prefixes       = local.settings.vnet.subnet_prefix
+  address_prefix         = local.settings.vnet.subnet_prefix
 }
 
 resource "azurerm_network_interface" "interface" {
