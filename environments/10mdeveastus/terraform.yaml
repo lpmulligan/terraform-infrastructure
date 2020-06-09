@@ -2,10 +2,6 @@
 ######## Update these values for your new environment ########
 ##############################################################
 
-# Tenant/Subscription Configurations
-#tenant_id:
-#subscription_id:
-
 ######################################################
 ################## Terraform State ####################
 
@@ -39,15 +35,17 @@ rg: RG
 
 app: QRM
 env: DV
-vmPrefix:
-  EUS: AZVWPEUS
-  WUS: AZVWPWUS
 hostType:
   admSvr: ADMSVR
-  hpcNode: HPCNODE
   hpcHead: HPCHEAD
   citrix: CTRX
   sql: SQL
+
+######################################################
+################## HPC Settings ######################
+
+hpcNode:
+  type: HPCNODE
 
 ######################################################
 ################## Location ##########################
@@ -69,50 +67,14 @@ keyvault:
   bypass: AzureServices
   default_action: Deny
 
-######################################################
-################## Recovery Services Vault ###########
-
-sku: Standard
-rsv: azeastus10mdevrsvbkup001
-
 ########################################
 ############## Networking ##############
 
-vnet-1: AZ-EUS-DEV-VNET-001_10.232.16.0_22
-vnet-1-subnet1: AZ-EUS-DEV-SNET001_10.232.16.0_26
-vnet-1-subnet2: AZ-EUS-DEV-SNET002_10.232.16.64_26
-vnet-1-address_space: ["10.232.16.0/22"]
+vnet:
+  name: AZ-EUS-DEV-VNET-001-10.232.16.0_22
+  subnet_prefix: 10.232.16.128/27
 
-vnet-1-subnet1-address_prefix:  "10.232.16.0/26"
-vnet-1-subnet2-address_prefix: "10.232.16.64/26"
-
-vnet-1-hub-peername: AZ-EUS-DEV-VNET-001_10.232.16.0_22-AZ-EUS-SHRDSVC-VNET-001_10.232.0.0_23
-hub-vnet-1-peername: AZ-EUS-SHRDSVC-VNET-001_10.232.0.0_23-AZ-EUS-DEV-VNET-001_10.232.16.0_22
-
-#NetworkSecurityGroup - will need 2 of these for the subnets
-vnet-1-subnet1-nsg: AZ-EUS-10.232.16.0_26-DEV-SNET001-NSG
-vnet-1-subnet2-nsg: AZ-EUS-10.232.16.64_26-DEV-SNET002-NSG
-
-vnet-2: AZ-EUS-DEV-VNET-001_10.232.24.0_22
-vnet-2-subnet1: AZ-EUS-DEV-SNET001_10.232.24.0_24
-vnet-2-subnet2: AZ-EUS-DEV-SNET002_10.232.25.0_24
-vnet-2-address_space: ["10.232.24.0/22"]
-
-vnet-2-subnet1-address_prefix:  "10.232.24.0/24"
-vnet-2-subnet2-address_prefix: "10.232.25.0/24"
-
-vnet-2-hub-peername: AZ-EUS-DEV-VNET-001_10.232.24.0_22-AZ-EUS-SHRDSVC-VNET-001_10.232.0.0_23
-hub-vnet-2-peername: AZ-EUS-SHRDSVC-VNET-001_10.232.0.0_23-AZ-EUS-DEV-VNET-001_10.232.24.0_22
-
-#NetworkSecurityGroup - will need 2 of these for the subnets
-vnet-2-subnet1-nsg: AZ-EUS-10.232.24.0_24-DEV-SNET001-NSG
-vnet-2-subnet2-nsg: AZ-EUS-10.232.25.0_24-DEV-SNET002-NSG
-
-
-lock: AZ-EUS-NETWORK-DEV-RG_LOCK
-lock_level: CanNotDelete
-notes: This resource group is shared, please confirm before deleting.
-
+interface_name: QRM
 
 ######################################################
 ############# CloudAdmin Storage Account #############
