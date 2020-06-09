@@ -5,7 +5,7 @@ resource "azurerm_subnet" "subnet" {
   address_prefixes       = local.settings.vnet.subnet_prefixes
 }
 
-resource "azurerm_network_interface" "interface" {
+resource "azurerm_network_interface" "nic_hpcnode" {
   count               = local.settings.hpcNode.count
   name                = "${local.settings.cloud}-${local.settings.app}-${local.settings.env}-NI-${count.index +1}"
   location            = local.settings.location
@@ -28,7 +28,7 @@ resource "azurerm_windows_virtual_machine" "hpcnode" {
   admin_username      = "adminuser"
   admin_password      = "P@$$w0rd1234!"
   network_interface_ids = [
-    azurerm_network_interface.interface.[count.index],
+    "${element(azurerm_network_interface.nic_hpcnode.*.id,count.index)}"
   ]
 
   os_disk {
