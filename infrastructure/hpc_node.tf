@@ -1,25 +1,27 @@
 resource "azurerm_subnet" "subnet" {
-  name                   = "internal"
-  resource_group_name    = "${local.settings.cloud}-${local.settings.app}-10M-${local.settings.env}-${local.settings.rg}"
+  name                   = "${local.settings.cloud}-${local.settings.app}-${local.settings.env}-SN"
+  resource_group_name    = "${local.settings.cloud}-${local.settings.app}-${local.settings.env}-${local.settings.rg}"
   virtual_network_name   = local.settings.vnet.name
-  address_prefixes         = local.settings.vnet.subnet_prefixes
+  address_prefixes       = local.settings.vnet.subnet_prefixes
 }
 
 resource "azurerm_network_interface" "interface" {
-  name                = "example-nic"
+  count               = local.settings.hpcNode.count
+  name                = "${local.settings.cloud}-${local.settings.app}-${local.settings.env}-NI-${count.index +1}"
   location            = local.settings.location
-  resource_group_name = "${local.settings.cloud}-${local.settings.app}-10M-${local.settings.env}-${local.settings.rg}"
+  resource_group_name = "${local.settings.cloud}-${local.settings.app}-${local.settings.env}-${local.settings.rg}"
 
   ip_configuration {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.subnet.id
-    private_ip_address_allocation = "Dynamic"
+    private_ip_address_allocation = "static"
+    private_ip_address            = ${cidrhost(data.azurerm_subnet.subnet.address_prefixes)}
   }
 }
 
 resource "azurerm_windows_virtual_machine" "hpcnode" {
   count               = local.settings.hpcNode.count
-  name                = "${local.settings.cloud}-${local.settings.app}-${local.settings.hpcNode.type}-${count.index + 1}-${local.settings.env}"
+  name                = "${local.settings.cloud}-${local.settings.app}-${local.settings.env}-${local.settings.hpcNode.type}-${count.index + 1}"
   resource_group_name = "${local.settings.cloud}-${local.settings.app}-${local.settings.env}-${local.settings.env}-${local.settings.rg}"
   location            = local.settings.location
   size                = local.settings.hpcNode.size

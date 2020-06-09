@@ -34,7 +34,7 @@ stages:
 - template: templates/apply.yml
   parameters:
     service_connection: 'Development'
-    states: 
+    states:
       infrastructure:
         workspaces:
           - default
