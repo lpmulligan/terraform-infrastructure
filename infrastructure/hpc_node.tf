@@ -15,7 +15,7 @@ resource "azurerm_network_interface" "nic_hpcnode" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.subnet.id
     private_ip_address_allocation = "static"
-    private_ip_address            = cidrhost(azurerm_subnet.subnet.address_prefixes, -"${count.index + 2}")
+    private_ip_address            = cidrhost(azurerm_subnet.subnet.address_prefixes[0], "${count.index + 2}")
   }
 }
 
