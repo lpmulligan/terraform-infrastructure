@@ -34,7 +34,7 @@ rg: RG
 ################## Prefixes ##########################
 
 app: QRM
-env: DV
+env: 10MDEV
 hostType:
   admSvr: ADMSVR
   hpcHead: HPCHEAD
@@ -47,6 +47,11 @@ hostType:
 hpcNode:
   type: HPCNODE
   size: Standard_B2s
+  count: 1
+hpcHeadNode:
+  type: HPCHEAD
+  size: Standard_B2s
+  count: 1
 
 ######################################################
 ################## Location ##########################
