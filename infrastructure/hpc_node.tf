@@ -5,9 +5,9 @@ resource "azurerm_subnet" "dev10msubnet" {
   address_prefixes       = local.settings.vnet.subnet_prefixes
 }
 
-resource "azurerm_network_interface" "nic_hpcnode" {
+resource "azurerm_network_interface" "hpcnode_nic" {
   count               = local.settings.hpcNode.count
-  name                = "${local.settings.cloud}-${local.settings.app}-${local.settings.env}-NI-${count.index +1}"
+  name                = "${local.settings.cloud}-${local.settings.app}-${local.settings.env}-${local.settings.hpcNode.type}-NI-${count.index +1}"
   location            = local.settings.location
   resource_group_name = "${local.settings.cloud}-${local.settings.app}-${local.settings.env}-${local.settings.rg}"
 
