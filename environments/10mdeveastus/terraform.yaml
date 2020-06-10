@@ -77,7 +77,7 @@ keyvault:
 ############## Networking ##############
 
 vnet:
-  name: AZ-EUS-DEV-VNET-001-10.232.16.0_22
+  name: AZ-EUS-DEV-VNET-001_10.232.16.0_22
   rg: AZ-EUS-NETWORK-DEV-RG
   subnet_prefixes: ["10.232.16.128/27"]
 
