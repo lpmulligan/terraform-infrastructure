@@ -1,0 +1,123 @@
+##############################################################
+######## Update these values for your new environment ########
+##############################################################
+
+######################################################
+################## Terraform State ####################
+
+stateRg: AZ-EUS-TFSTATE-10MDEV-RG
+stateRgLocation: eastus
+stateSA: azeastus10mdevtfstate
+stateSATier: Standard
+stateSARepType: LRS
+
+######################################################
+################## RG Identifiers ####################
+#Do Not Change - These build the appropriate RG names
+#in main.tf
+#Note: service entry should match the abbreviation for
+#the subscription you are deploying to
+
+cloud: AZ
+locationtype: EUS
+nettype: NETWORK
+fwtype: PAN
+backtype: BACKUP
+cloudtype: CLDADMIN
+monitype: MONITOR
+addstype: ADDS
+tftype: TFDEPLOY
+service: DEV
+rg: RG
+
+######################################################
+################## Prefixes ##########################
+
+app: QRM
+env: 10MDEV
+hostType:
+  admSvr: ADMSVR
+  hpcHead: HPCHEAD
+  citrix: CTRX
+  sql: SQL
+
+######################################################
+################## HPC Settings ######################
+
+hpcNode:
+  type: HPCNODE
+  size: Standard_B2s
+  count: 1
+hpcHeadNode:
+  type: HPCHEAD
+  size: Standard_B2s
+  count: 1
+
+######################################################
+################## Location ##########################
+
+location: eastus
+
+######################################################
+################## Key Vault #########################
+
+keyvault:
+  name: azeastus10mdevkv001
+  location: eastus
+  tags:
+  encryption: true
+  sku_name: standard
+  key_permissions: get
+  secret_permissions: get
+  storage_permissions: get
+  bypass: AzureServices
+  default_action: Deny
+
+########################################
+############## Networking ##############
+
+vnet:
+  name: AZ-EUS-DEV-VNET-001_10.232.16.0_22
+  rg: AZ-EUS-NETWORK-DEV-RG
+  subnet_prefixes: ["10.232.16.128/27"]
+
+interface_name: QRM
+
+######################################################
+############# CloudAdmin Storage Account #############
+
+storagename: azeastus10mdevlrsadmin001
+
+storage_account:
+  storage_account:
+  replication: lr
+  account_tier: Standard
+  access_tier: Hot
+  replication_type: LRS
+  kind: BlobStorage
+  enable_https_traffic_only: true
+
+######################################################
+####### Network Security Group Diagnostic Settings ###
+
+namensg1: nsg-1diag
+namensg2: nsg-2diag
+days: 90
+enabled: true
+
+######################################################
+###################### Tags ##########################
+
+# Update Tags to be applied to all resources
+tags:
+  AppID: # Will need to get this
+  Cost-Center: # Will need to get this
+  Created-By: # Will need to get this
+  Deployed Date: # Not sure how this would work in just plain yaml
+  Description: # Will need to get this
+  Owner: # Will need to get this
+  SDLC: # Will need to get this
+
+
+
+
