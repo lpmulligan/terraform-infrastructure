@@ -25,6 +25,7 @@ resource "azurerm_windows_virtual_machine" "hpcnode" {
   resource_group_name = "${local.settings.cloud}-${local.settings.app}-${local.settings.env}-${local.settings.rg}"
   location            = local.settings.location
   size                = local.settings.hpcNode.size
+  computer_name       = "${local.settings.app}${local.settings.env}NODE${count.index + 1}"
   admin_username      = "adminuser"
   admin_password      = "P@$$w0rd1234!"
   network_interface_ids = ["${element(azurerm_network_interface.hpcnode_nic.*.id,count.index)}"]
