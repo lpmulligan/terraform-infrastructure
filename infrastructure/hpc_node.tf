@@ -1,7 +1,3 @@
-locals {
-  settings = yamldecode(file("../environments/10mdeveastus/terraform.yaml"))
-}
-
 resource "azurerm_subnet" "dev10msubnet" {
   name                   = "${local.settings.cloud}-${local.settings.app}-${local.settings.env}-SN"
   resource_group_name    = data.azurerm_virtual_network.devvirtualnetwork.resource_group_name
