@@ -22,6 +22,10 @@ data "azurerm_client_config" "current" {}
 
 data "azurerm_subscription" "current" {}
 
+data "azurerm_virtual_network" "devvirtualnetwork" {
+  name                = local.settings.vnet.name
+  resource_group_name = local.settings.vnet.rg
+}
 
 resource "azurerm_resource_group" "dev" {
   name     = "${local.settings.cloud}-${local.settings.app}-${local.settings.env}-${local.settings.rg}"
